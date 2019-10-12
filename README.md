@@ -47,8 +47,7 @@ $ git clone https://github.com/melquisedecfelipe/finch
 # Go into the repository
 $ cd finch
 
-# Go into the frontend and install dependencies
-$ cd frontend
+# Install dependencies
 $ npm i
 
 # Run frontend
