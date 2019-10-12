@@ -71,7 +71,7 @@ export default function Dashboard(props) {
   }
 
   let filteredItems = items.filter(elem => {
-    return elem.nome.toLowerCase().includes(search);
+    return elem.nome.toLowerCase().includes(search.toLowerCase());
   });
 
   return (
