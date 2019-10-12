@@ -11,6 +11,7 @@ export default function Dashboard(props) {
   const [items, setItems] = useState([]);
   const [title, setTitle] = useState('');
   const [subTitle, setSubTitle] = useState('');
+  const [search, setSearch] = useState('');
   const localStorageItems = JSON.parse(localStorage.getItem('items'));
   const url = props.location.pathname;
 
@@ -52,6 +53,14 @@ export default function Dashboard(props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  function handleInput(e) {
+    setSearch(e.target.value);
+  }
+
+  let filteredItems = items.filter(elem => {
+    return elem.nome.toLowerCase().includes(search);
+  });
+
   return (
     <div className="dashboard">
       <Header className="dashboard-header" />
@@ -62,13 +71,13 @@ export default function Dashboard(props) {
             <p>{subTitle}</p>
           </div>
           <div className="dashboard-search">
-            <Search />
+            <Search handleInput={handleInput} />
           </div>
         </div>
         <div className="dashboard-content">
-          { items.length > 0 ? (
-              items.map(item => (
-                <Item key={item.id} item={item}/>
+          { filteredItems.length > 0 ? (
+              filteredItems.map(elem => (
+                <Item key={elem.id} item={elem}/>
               ))
             ) : (
             <div className="load">
