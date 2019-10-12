@@ -14,9 +14,9 @@ export default function ItemDetail(props) {
 
   useEffect(() => {
     async function loadItem() {
-      localStorageItems.forEach(element => {
-        if (element.id === id) {
-          setItem(element);
+      localStorageItems.forEach(elem => {
+        if (elem.id === id) {
+          setItem(elem);
         }
       });
     }
@@ -33,13 +33,6 @@ export default function ItemDetail(props) {
             <div className="item-content">
               <h1>{item.nome}</h1>
               <span>{parseInt(item.valor).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</span>
-              <div className="item-check">
-                <label>
-                  <input type="checkbox"/>
-                  <span></span>
-                </label>
-                <p for="">tornar favorito</p>
-              </div>
             </div>
             <p>{item.decricaoCurta}</p>
           </div>
