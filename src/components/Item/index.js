@@ -19,7 +19,6 @@ export default function Dashboard({item}) {
         localStorage.setItem('items', JSON.stringify(localStorageItems));
       }
     }
-    console.log(localStorageItems);
   }
 
   return (
