@@ -12,13 +12,21 @@ export default function Dashboard(props) {
   const [title, setTitle] = useState('');
   const [subTitle, setSubTitle] = useState('');
   const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(true);
   const localStorageItems = JSON.parse(localStorage.getItem('items'));
   const url = props.location.pathname;
 
   useEffect(() => {
     async function loadItems() {
-      const response = await api.get('/5d3b57023000005500a2a0a6');
-      let data = response.data.produtos;
+      let data;
+
+      if (localStorage.length === 0) {
+        const response = await api.get('/5d3b57023000005500a2a0a6');
+        data = response.data.produtos;
+        localStorage.setItem('items', JSON.stringify(data));
+      } else {
+        data = localStorageItems;
+      }
 
       switch (url) {
         case '/':
@@ -39,17 +47,22 @@ export default function Dashboard(props) {
           setTitle('- Conheça nossas promoções');
           setSubTitle('Listagem de produtos em promoção - clique no produto desejado para saber mais');
           break;
+        case '/favoritos':
+          data = data.filter(elem => {
+            return elem.favoritos === true;
+          });
+          setTitle('- Meus Favoritos');
+          setSubTitle('Listagem de produtos marcados como favoritos - clique no produto desejado para saber mais');
+          break;
         default:
           break;
       }
 
-      localStorage.setItem('items', JSON.stringify(data));
       setItems(data);
+      setLoading(false);
     }
 
-    if (localStorageItems !== null) {
-      loadItems();
-    }
+    loadItems();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -81,7 +94,11 @@ export default function Dashboard(props) {
               ))
             ) : (
             <div className="load">
-              <h1>Carregando...</h1>
+              { loading === true ? (
+                <h1>Carregando... :D</h1>
+              ) : (
+                <h1>Não encontramos nenhum item com esse filtro... :(</h1>
+              )}
             </div>
           ) }
         </div>
