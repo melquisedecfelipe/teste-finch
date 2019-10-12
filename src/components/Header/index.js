@@ -15,10 +15,10 @@ export default function Header() {
     <div className="header">
       <Link to="/"><img src={Logo} alt="Logo"/></Link>
       <ul>
-        <Link className="link" to="/"><img src={Supplies} alt=""/><p>Todos</p></Link>
-        <Link className="link" to="/exclusivos"><img src={Box} alt=""/><p>Exclusivos</p></Link>
-        <Link className="link" to="/promocao"><img src={Gift} alt=""/><p>Promoção</p></Link>
-        <Link className="link" to="/favoritos"><img src={Recommended} alt=""/><p>Favoritos</p></Link>
+        <Link className={window.location.pathname === '/' ? 'link -active' : 'link'} to="/"><img src={Supplies} alt=""/><p>Todos</p></Link>
+        <Link className={window.location.pathname === '/exclusivos' ? 'link -active' : 'link'} to="/exclusivos"><img src={Box} alt=""/><p>Exclusivos</p></Link>
+        <Link className={window.location.pathname === '/promocao' ? 'link -active' : 'link'} to="/promocao"><img src={Gift} alt=""/><p>Promoção</p></Link>
+        <Link className={window.location.pathname === '/favoritos' ? 'link -active' : 'link'} to="/favoritos"><img src={Recommended} alt=""/><p>Favoritos</p></Link>
       </ul>
       <img className="finch" src={Finch} alt="Finch"></img>
     </div>
