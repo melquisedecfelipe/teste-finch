@@ -7,8 +7,6 @@ import Header from '../../components/Header';
 import Item from '../../components/Item';
 import Search from '../../components/Search';
 
-import Lupe from '../../assets/loupe@2x.png'
-
 export default function Dashboard(props) {
   const [items, setItems] = useState([]);
   const [title, setTitle] = useState('');
