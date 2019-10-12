@@ -32,7 +32,6 @@
 
         > .item-check {
           display: flex;
-          justify-content: center;
           align-items: center;
 
           > label {
@@ -192,24 +191,27 @@
 
       > .item-header {
         padding: 20px;
-        display: flex;
         border: none;
 
         & .item-content {
+          display: grid;
+
+          > span {
+            margin: 0;
+          }
+
           > .item-check {
-            position: absolute;
-            right: 20px;
+            margin-bottom: 10px;
           }
         }
 
         > .item-search {
-          margin-top: 10px;
-          flex-direction: row-reverse;
-
           & .item-return {
             border: 0;
             justify-content: flex-end;
-            margin-top: 10px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
           }
         }
       }
@@ -235,13 +237,4 @@
       }
     }
   }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1199px) {
-
-}
-
-
-@media screen and (min-width: 1920px) {
-
 }
