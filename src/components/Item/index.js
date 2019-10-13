@@ -1,24 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
 export default function Dashboard({item}) {
-  const [checkbox, setCheckbox] = useState(false);
-  let localStorageItems = [];
 
-  function handleCheckbox(e) {
-    localStorageItems = JSON.parse(localStorage.getItem('items'));
+  function handleCheckbox() {
+    const localStorageItems = JSON.parse(localStorage.getItem('items'));
 
-    setCheckbox(e.target.value);
+    const newFavorite = localStorageItems.map(elem => {
+      return elem.id === item.id ? { ...elem, favoritos: !elem.favoritos } : elem;
+    });
 
-    for (let index = 0; index < localStorageItems.length; index++) {
-      let elem = localStorageItems[index];
-      if (elem.id === item.id) {
-        elem.favoritos = elem.favoritos === true ? false : true;
-        localStorage.setItem('items', JSON.stringify(localStorageItems));
-      }
-    }
+    localStorage.setItem('items', JSON.stringify(newFavorite));
   }
 
   return (
@@ -35,7 +29,7 @@ export default function Dashboard({item}) {
           <h1>{parseInt(item.valor).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</h1>
           <div className="item-check">
             <label>
-              <input type="checkbox" value={checkbox} onChange={e => handleCheckbox(e)} defaultChecked={item.favoritos === true}/>
+              <input type="checkbox" value={item.favoritos} onChange={() => handleCheckbox()} defaultChecked={item.favoritos === true}/>
               <span></span>
             </label>
             <p>tornar favorito</p>
