@@ -51,13 +51,13 @@ export default function ItemDetail(props) {
             <p>{item.descricaoLonga}</p>
           </div>
         </div>
-        <div className="item-datasheet">
+        {/* <div className="item-datasheet">
           <h1>Ficha Técnica</h1>
           <div>
             <ul>
             </ul>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

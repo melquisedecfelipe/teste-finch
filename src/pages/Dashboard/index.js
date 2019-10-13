@@ -14,11 +14,10 @@ export default function Dashboard(props) {
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
   const localStorageItems = JSON.parse(localStorage.getItem('items'));
-  const url = props.location.pathname;
+  let data;
 
   useEffect(() => {
     async function loadItems() {
-      let data;
 
       if (localStorage.length === 0) {
         const response = await api.get('/5d3b57023000005500a2a0a6');
@@ -28,49 +27,52 @@ export default function Dashboard(props) {
         data = localStorageItems;
       }
 
-      switch (url) {
-        case '/':
-          setTitle('- Conheça todos os nossos produtos');
-          setSubTitle('Listagem de produtos - clique no produto desejado para saber mais');
-          break;
-        case '/exclusivos':
-          data = data.filter(elem => {
-            return elem.exclusivo === true;
-          });
-          setTitle('- Conheça nossos produtos exclusivos');
-          setSubTitle('Listagem de produtos exclusivos - clique no produto desejado para saber mais');
-          break;
-        case '/promocao':
-          data = data.filter(elem => {
-            return elem.promocao === true;
-          });
-          setTitle('- Conheça nossas promoções');
-          setSubTitle('Listagem de produtos em promoção - clique no produto desejado para saber mais');
-          break;
-        case '/favoritos':
-          data = data.filter(elem => {
-            return elem.favoritos === true;
-          });
-          setTitle('- Meus Favoritos');
-          setSubTitle('Listagem de produtos marcados como favoritos - clique no produto desejado para saber mais');
-          break;
-        default:
-          break;
-      }
+      handleMenu();
 
       setItems(data);
       setLoading(false);
     }
 
     loadItems();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  function handleMenu() {
+    switch (props.location.pathname) {
+      case '/':
+        setTitle('- Conheça todos os nossos produtos');
+        setSubTitle('Listagem de produtos - clique no produto desejado para saber mais');
+        break;
+      case '/exclusivos':
+        data = data.filter(elem => {
+          return elem.exclusivo === true;
+        });
+        setTitle('- Conheça nossos produtos exclusivos');
+        setSubTitle('Listagem de produtos exclusivos - clique no produto desejado para saber mais');
+        break;
+      case '/promocao':
+        data = data.filter(elem => {
+          return elem.promocao === true;
+        });
+        setTitle('- Conheça nossas promoções');
+        setSubTitle('Listagem de produtos em promoção - clique no produto desejado para saber mais');
+        break;
+      case '/favoritos':
+        data = data.filter(elem => {
+          return elem.favoritos === true;
+        });
+        setTitle('- Meus Favoritos');
+        setSubTitle('Listagem de produtos marcados como favoritos - clique no produto desejado para saber mais');
+        break;
+      default:
+        break;
+    }
+  }
 
   function handleInput(e) {
     setSearch(e.target.value);
   }
 
-  let filteredItems = items.filter(elem => {
+  const filteredItems = items.filter(elem => {
     return elem.nome.toLowerCase().includes(search.toLowerCase());
   });
 
