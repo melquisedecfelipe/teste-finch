@@ -10,8 +10,8 @@ import Loader from '../../components/Loader';
 
 export default function Dashboard() {
   const [items, setItems] = useState([]);
-  const [title, setTitle] = useState('');
-  const [subTitle, setSubTitle] = useState('');
+  const [title, setTitle] = useState(' - Carregando...');
+  const [subTitle, setSubTitle] = useState('Carregando...');
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
   const localStorageItems = JSON.parse(localStorage.getItem('items'));
@@ -20,21 +20,21 @@ export default function Dashboard() {
   function handleMenu() {
     switch (window.location.pathname) {
       case '/':
-        setTitle('- Conheça todos os nossos produtos');
+        setTitle(' - Conheça todos os nossos produtos');
         setSubTitle('Listagem de produtos - clique no produto desejado para saber mais');
         break;
       case '/exclusivos':
         data = data.filter(elem => {
           return elem.exclusivo === true;
         });
-        setTitle('- Conheça nossos produtos exclusivos');
+        setTitle(' - Conheça nossos produtos exclusivos');
         setSubTitle('Listagem de produtos exclusivos - clique no produto desejado para saber mais');
         break;
       case '/promocao':
         data = data.filter(elem => {
           return elem.promocao === true;
         });
-        setTitle('- Conheça nossas promoções');
+        setTitle(' - Conheça nossas promoções');
         setSubTitle(
           'Listagem de produtos em promoção - clique no produto desejado para saber mais',
         );
@@ -43,7 +43,7 @@ export default function Dashboard() {
         data = data.filter(elem => {
           return elem.favoritos === true;
         });
-        setTitle('- Meus Favoritos');
+        setTitle(' - Meus Favoritos');
         setSubTitle(
           `Listagem de produtos marcados como favoritos -
           clique no produto desejado para saber mais`,

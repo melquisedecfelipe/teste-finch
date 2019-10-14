@@ -16,11 +16,13 @@
       & h1 {
         font-size: 20px;
         line-height: 33px;
-        letter-spacing: 0;
         color: #282430;
 
         & span {
+          font-size: 20px;
+          line-height: 33px;
           font-weight: lighter;
+          color: #282430;
         }
       }
 

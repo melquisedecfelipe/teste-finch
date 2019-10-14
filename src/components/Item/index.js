@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './styles.scss';
 
 export default function Dashboard({ item }) {
-  const { id, exclusivo, promocao, valor, favoritos, nome, decricaoCurta } = item;
+  const { id, imagem, exclusivo, promocao, valor, favoritos, nome, decricaoCurta } = item;
 
   function handleCheckbox() {
     const localStorageItems = JSON.parse(localStorage.getItem('items'));
@@ -19,7 +19,7 @@ export default function Dashboard({ item }) {
   return (
     <div className="dashboard-item">
       <Link to={`/item/${id}`}>
-        <div className="item-img" style={{ backgroundImage: `url(${item.imagem})` }}>
+        <div className="item-img" style={{ backgroundImage: `url(${imagem})` }} title={nome}>
           <p className={exclusivo === true ? '-blue' : '' || promocao === true ? '-red' : ''}>
             {exclusivo === true ? 'Exclusivo' : '' || promocao === true ? 'Promoção' : ''}
           </p>
