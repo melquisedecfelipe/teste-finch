@@ -6,6 +6,7 @@ import './styles.scss';
 import Header from '../../components/Header';
 import Item from '../../components/Item';
 import Search from '../../components/Search';
+import Loader from '../../components/Loader';
 
 export default function Dashboard(props) {
   const [items, setItems] = useState([]);
@@ -33,7 +34,9 @@ export default function Dashboard(props) {
       setLoading(false);
     }
 
-    loadItems();
+    setTimeout(() => {
+      loadItems();
+    }, 2000);
   }, []);
 
   function handleMenu() {
@@ -78,7 +81,7 @@ export default function Dashboard(props) {
 
   return (
     <div className="dashboard">
-      <Header className="dashboard-header" />
+      <Header/>
       <div className="dashboard-container">
         <div className="dashboard-header">
           <div>
@@ -95,13 +98,17 @@ export default function Dashboard(props) {
                 <Item key={elem.id} item={elem}/>
               ))
             ) : (
-            <div className="load">
-              { loading === true ? (
-                <h1>Carregando... :D</h1>
+              loading === true ? (
+                <>
+                  <Loader />
+                  <Loader />
+                  <Loader />
+                  <Loader />
+                  <Loader />
+                </>
               ) : (
                 <h1>Não encontramos nenhum item com esse filtro... :(</h1>
-              )}
-            </div>
+              )
           ) }
         </div>
       </div>

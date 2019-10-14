@@ -5,6 +5,7 @@
     padding: 40px 100px;
     width: 100%;
     position: relative;
+    margin-left: 100px;
 
     > .dashboard-header {
       display: flex;
@@ -46,13 +47,11 @@
       grid-template-columns: repeat(3, 1fr);
       grid-gap: 40px;
 
-      > .load {
-        > h1 {
-          font-size: 20px;
-          line-height: 33px;
-          letter-spacing: 0;
-          color: #282430;
-        }
+      > h1 {
+        font-size: 20px;
+        line-height: 33px;
+        letter-spacing: 0;
+        color: #282430;
       }
     }
   }
@@ -64,6 +63,7 @@
 
     > .dashboard-container {
       padding: 30px;
+      margin: 0;
 
       > .dashboard-header {
         display: grid;
@@ -80,7 +80,7 @@
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1199px) {
+@media screen and (min-width: 769px) and (max-width: 1199px) {
   .dashboard {
     > .dashboard-container {
       > .dashboard-content {
