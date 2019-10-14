@@ -11,7 +11,7 @@
       display: flex;
       justify-content: space-between;
       padding-bottom: 30px;
-      border-bottom: 1px solid #CCCCCC;
+      border-bottom: 1px solid #cccccc;
 
       & h1 {
         font-size: 20px;
@@ -27,7 +27,7 @@
       & p {
         font-size: 12px;
         line-height: 23px;
-        color: #8E879E;
+        color: #8e879e;
       }
 
       > .dashboard-search {
@@ -89,7 +89,6 @@
     }
   }
 }
-
 
 @media screen and (min-width: 1920px) {
   .dashboard {

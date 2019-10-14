@@ -10,7 +10,8 @@ import Return from '../../assets/return@2x.png';
 export default function ItemDetail(props) {
   const [item, setItem] = useState([]);
   const localStorageItems = JSON.parse(localStorage.getItem('items'));
-  const id = parseInt(props.match.params.id);
+  const { match } = props;
+  const id = parseInt(match.params.id, 10);
 
   useEffect(() => {
     async function loadItem() {
@@ -21,7 +22,6 @@ export default function ItemDetail(props) {
       });
     }
     loadItem();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -32,18 +32,33 @@ export default function ItemDetail(props) {
           <div>
             <div className="item-content">
               <h1>{item.nome}</h1>
-              <span>{parseInt(item.valor).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</span>
+              <span>
+                {parseInt(item.valor, 10).toLocaleString('pt-br', {
+                  style: 'currency',
+                  currency: 'BRL',
+                })}
+              </span>
             </div>
             <p>{item.decricaoCurta}</p>
           </div>
           <div className="item-search">
-            <Link to="/"><img className="item-return" src={Return} alt="Voltar"/></Link>
+            <Link to="/">
+              <img className="item-return" src={Return} alt="Voltar" />
+            </Link>
           </div>
         </div>
         <div className="item-detail">
-          <div className="item-img" style={{backgroundImage: `url(${item.imagem})`}}>
-            <p className={item.exclusivo === true ? "-blue" : ""  || item.promocao === true ? "-red" : ""}>
-              { item.exclusivo === true ? "Exclusivo" : ""  || item.promocao === true ? "Promoção" : ""}
+          <div className="item-img" style={{ backgroundImage: `url(${item.imagem})` }}>
+            <p
+              className={
+                item.exclusivo === true ? '-blue' : '' || item.promocao === true ? '-red' : ''
+              }
+            >
+              {item.exclusivo === true
+                ? 'Exclusivo'
+                : '' || item.promocao === true
+                ? 'Promoção'
+                : ''}
             </p>
           </div>
           <div className="item-info">
@@ -60,5 +75,5 @@ export default function ItemDetail(props) {
         </div> */}
       </div>
     </div>
-  )
+  );
 }

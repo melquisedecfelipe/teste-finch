@@ -11,7 +11,7 @@
       display: flex;
       justify-content: space-between;
       padding-bottom: 30px;
-      border-bottom: 1px solid #CCCCCC;
+      border-bottom: 1px solid #cccccc;
 
       & .item-content {
         display: flex;
@@ -26,7 +26,7 @@
         > span {
           font-size: 20px;
           line-height: 33px;
-          color: #5E3BA5;
+          color: #5e3ba5;
           font-weight: bold;
           margin: 0 20px;
         }
@@ -35,7 +35,7 @@
       & p {
         font-size: 12px;
         line-height: 23px;
-        color: #8E879E;
+        color: #8e879e;
       }
 
       > .item-search {
@@ -72,17 +72,17 @@
           right: 0;
           font-size: 14px;
           line-height: 21px;
-          color: #5E3BA5;
-          color: #FFFFFF;
+          color: #5e3ba5;
+          color: #ffffff;
           padding: 5px 20px;
         }
 
         > .-red {
-          background: transparent linear-gradient(125deg, #EF0E5A 0%, #55118F 100%);
+          background: transparent linear-gradient(125deg, #ef0e5a 0%, #55118f 100%);
         }
 
         > .-blue {
-          background: transparent linear-gradient(125deg, #1DB6CE 0%, #182AC9 100%);
+          background: transparent linear-gradient(125deg, #1db6ce 0%, #182ac9 100%);
         }
       }
 
@@ -95,7 +95,7 @@
       & p {
         font-size: 14px;
         line-height: 23px;
-        color: #8E879E;
+        color: #8e879e;
       }
     }
 
@@ -105,7 +105,7 @@
         line-height: 33px;
         color: #282430;
         padding: 30px 0;
-        border-bottom: 1px solid #CCCCCC;
+        border-bottom: 1px solid #cccccc;
       }
 
       > ul {
@@ -114,13 +114,12 @@
         > li {
           font-size: 14px;
           line-height: 33px;
-          color: #8E879E;
+          color: #8e879e;
         }
       }
     }
   }
 }
-
 
 @media screen and (max-width: 768px) {
   .item {
@@ -148,7 +147,7 @@
         flex-direction: column;
         margin: 0;
 
-        & .item-img  {
+        & .item-img {
           width: 100%;
           border-radius: 0;
           padding: 0;
@@ -181,7 +180,7 @@
         flex-direction: column;
         margin-top: 20px;
 
-        & .item-img  {
+        & .item-img {
           width: 100%;
           border-radius: 0;
         }

@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
 import ContentLoader from 'react-content-loader';
 
 import './styles.scss';
 
 const Loader = () => (
-  <ContentLoader className="loader"
+  <ContentLoader
+    className="loader"
     height={335}
     width={300}
     speed={3}
