@@ -34,6 +34,7 @@ This project was developed with the following technologies:
 -  [Axios](https://github.com/axios/axios)
 -  [Node Sass](https://www.npmjs.com/package/node-sass)
 -  [React](https://reactjs.org/)
+-  [React content loader](https://www.npmjs.com/package/react-content-loader)
 -  [React router](https://reacttraining.com/react-router/)
 
 ## :information_source: How To Use
