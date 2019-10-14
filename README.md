@@ -32,7 +32,10 @@
 This project was developed with the following technologies:
 
 -  [Axios](https://github.com/axios/axios)
--  [Node Sass](https://www.npmjs.com/package/node-sass)
+-  [Eslint](https://eslint.org/)
+-  [Husky](https://github.com/typicode/husky)
+-  [Node sass](https://www.npmjs.com/package/node-sass)
+-  [Prettier](https://prettier.io/)
 -  [React](https://reactjs.org/)
 -  [React content loader](https://www.npmjs.com/package/react-content-loader)
 -  [React router](https://reacttraining.com/react-router/)
