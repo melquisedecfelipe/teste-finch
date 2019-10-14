@@ -5,6 +5,7 @@
     padding: 40px 100px;
     width: 100%;
     position: relative;
+    margin-left: 100px;
 
     > .item-header {
       display: flex;
@@ -127,6 +128,7 @@
 
     > .item-container {
       padding: 0px;
+      margin: 0;
 
       > .item-header {
         padding: 20px;
