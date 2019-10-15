@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
+import Checkbox from '../Checkbox';
+
 export default function Dashboard({ item }) {
   const { id, imagem, exclusivo, promocao, valor, favoritos, nome, decricaoCurta } = item;
 
@@ -33,19 +35,7 @@ export default function Dashboard({ item }) {
               currency: 'BRL',
             })}
           </h1>
-          <div className="item-check">
-            <label htmlFor="checkbox">
-              <input
-                type="checkbox"
-                id="checkbox"
-                value={favoritos}
-                onChange={() => handleCheckbox()}
-                defaultChecked={favoritos === true}
-              />
-              <span />
-            </label>
-            <p>tornar favorito</p>
-          </div>
+          <Checkbox id={id} favoritos={favoritos} handleCheckbox={handleCheckbox} />
         </div>
         <h1>{nome}</h1>
         <p>{decricaoCurta}</p>
