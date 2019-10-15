@@ -7,7 +7,7 @@ import Header from '../../components/Header';
 
 import Return from '../../assets/return@2x.png';
 
-export default function ItemDetail(props) {
+export default function Detail(props) {
   const [item, setItem] = useState([]);
   const localStorageItems = JSON.parse(localStorage.getItem('items'));
   const { match } = props;
