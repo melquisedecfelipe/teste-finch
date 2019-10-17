@@ -4,9 +4,7 @@ import './styles.scss';
 
 import Lupe from '../../assets/loupe@2x.png';
 
-export default function Search(props) {
-  const { handleInput } = props;
-
+export default function Search({ handleInput }) {
   return (
     <div className="search-form">
       <img src={Lupe} alt="Lupa" />
