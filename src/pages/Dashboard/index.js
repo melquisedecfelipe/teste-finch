@@ -72,7 +72,7 @@ export default function Dashboard() {
 
     setTimeout(() => {
       loadItems();
-    }, 2000);
+    }, 750);
   }, []);
 
   function handleInput(e) {
