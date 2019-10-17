@@ -2,9 +2,7 @@ import React from 'react';
 
 import './styles.scss';
 
-export default function Checkbox(props) {
-  const { id, favoritos, handleCheckbox } = props;
-
+export default function Checkbox({ id, favoritos, handleCheckbox }) {
   return (
     <div className="item-check">
       <label htmlFor={id}>
@@ -12,7 +10,7 @@ export default function Checkbox(props) {
           type="checkbox"
           id={id}
           value={favoritos}
-          onChange={() => handleCheckbox}
+          onChange={() => handleCheckbox()}
           defaultChecked={favoritos === true}
         />
         <span />
