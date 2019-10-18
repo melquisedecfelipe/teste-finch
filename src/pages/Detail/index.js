@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
-import Header from '../../components/Header';
-
 import Return from '../../assets/return@2x.png';
 
 export default function Detail({ match }) {
@@ -25,7 +23,6 @@ export default function Detail({ match }) {
 
   return (
     <div className="item">
-      <Header />
       <div className="item-container">
         <div className="item-header">
           <div>

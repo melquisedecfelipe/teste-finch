@@ -3,22 +3,22 @@ import api from '../../services/api';
 
 import './styles.scss';
 
-import Header from '../../components/Header';
 import Item from '../../components/Item';
 import Search from '../../components/Search';
 import Loader from '../../components/Loader';
 
-export default function Dashboard() {
+export default function Dashboard({ history }) {
   const [items, setItems] = useState([]);
   const [title, setTitle] = useState(' - Carregando...');
   const [subTitle, setSubTitle] = useState('Carregando...');
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
   const localStorageItems = JSON.parse(localStorage.getItem('items'));
+  const location = history.location.pathname;
   let data;
 
   function handleMenu() {
-    switch (window.location.pathname) {
+    switch (location) {
       case '/':
         setTitle(' - Conheça todos os nossos produtos');
         setSubTitle('Listagem de produtos - clique no produto desejado para saber mais');
@@ -70,10 +70,8 @@ export default function Dashboard() {
       setLoading(false);
     }
 
-    setTimeout(() => {
-      loadItems();
-    }, 750);
-  }, []);
+    loadItems();
+  }, [location]);
 
   function handleInput(e) {
     setSearch(e.target.value);
@@ -85,7 +83,6 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard">
-      <Header />
       <div className="dashboard-container">
         <div className="dashboard-header">
           <div>
