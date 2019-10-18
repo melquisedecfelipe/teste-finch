@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import './styles.scss';
 
@@ -7,19 +7,12 @@ import Return from '../../assets/return@2x.png';
 
 export default function Detail({ match }) {
   const [item, setItem] = useState([]);
-  const localStorageItems = JSON.parse(localStorage.getItem('items'));
   const id = parseInt(match.params.id, 10);
 
   useEffect(() => {
-    async function loadItem() {
-      localStorageItems.forEach(elem => {
-        if (elem.id === id) {
-          setItem(elem);
-        }
-      });
-    }
-    loadItem();
-  }, []);
+    const storageItems = JSON.parse(localStorage.getItem('items'));
+    storageItems.filter(elem => (elem.id === id ? setItem(elem) : null));
+  }, [id]);
 
   return (
     <div className="item">
@@ -38,9 +31,9 @@ export default function Detail({ match }) {
             <p>{item.decricaoCurta}</p>
           </div>
           <div className="item-search">
-            <Link to="/">
+            <NavLink to="/">
               <img className="item-return" src={Return} alt="Voltar" />
-            </Link>
+            </NavLink>
           </div>
         </div>
         <div className="item-detail">
