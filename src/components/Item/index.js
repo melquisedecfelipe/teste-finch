@@ -5,17 +5,20 @@ import './styles.scss';
 
 import Checkbox from '../Checkbox';
 
-export default function Dashboard({ item }) {
+export default function Dashboard({ item, handleCount }) {
   const { id, imagem, exclusivo, promocao, valor, favoritos, nome, decricaoCurta } = item;
 
   function handleCheckbox() {
-    const localStorageItems = JSON.parse(localStorage.getItem('items'));
+    let storageItems = JSON.parse(localStorage.getItem('items'));
 
-    const newFavorite = localStorageItems.map(elem => {
-      return elem.id === id ? { ...elem, favoritos: !elem.favoritos } : elem;
-    });
+    const items = storageItems.map(elem =>
+      elem.id === id ? { ...elem, favoritos: !elem.favoritos } : elem,
+    );
+    localStorage.setItem('items', JSON.stringify(items));
 
-    localStorage.setItem('items', JSON.stringify(newFavorite));
+    storageItems = JSON.parse(localStorage.getItem('items'));
+    const favorites = storageItems.filter(elem => elem.favoritos === true);
+    handleCount(favorites.length);
   }
 
   return (

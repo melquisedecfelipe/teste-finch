@@ -10,76 +10,74 @@ import Loader from '../../components/Loader';
 export default function Dashboard({ history }) {
   const [items, setItems] = useState([]);
   const [title, setTitle] = useState(' - Carregando...');
-  const [subTitle, setSubTitle] = useState('Carregando...');
+  const [subtitle, setSubtitle] = useState('Carregando...');
   const [search, setSearch] = useState('');
+  const [countFavorite, setCountFavorite] = useState(0);
   const [loading, setLoading] = useState(true);
-  const localStorageItems = JSON.parse(localStorage.getItem('items'));
-  const location = history.location.pathname;
-  let data;
+  const locationPath = history.location.pathname;
 
-  function handleMenu() {
-    switch (location) {
-      case '/':
-        setTitle(' - Conheça todos os nossos produtos');
-        setSubTitle('Listagem de produtos - clique no produto desejado para saber mais');
-        break;
-      case '/exclusivos':
-        data = data.filter(elem => {
-          return elem.exclusivo === true;
-        });
-        setTitle(' - Conheça nossos produtos exclusivos');
-        setSubTitle('Listagem de produtos exclusivos - clique no produto desejado para saber mais');
-        break;
-      case '/promocao':
-        data = data.filter(elem => {
-          return elem.promocao === true;
-        });
-        setTitle(' - Conheça nossas promoções');
-        setSubTitle(
-          'Listagem de produtos em promoção - clique no produto desejado para saber mais',
-        );
-        break;
-      case '/favoritos':
-        data = data.filter(elem => {
-          return elem.favoritos === true;
-        });
-        setTitle(' - Meus Favoritos');
-        setSubTitle(
-          `Listagem de produtos marcados como favoritos -
-          clique no produto desejado para saber mais`,
-        );
-        break;
-      default:
-        break;
-    }
+  function handleInput(e) {
+    setSearch(e.target.value);
   }
 
+  function handleCount(e) {
+    setCountFavorite(e);
+  }
+
+  const filteredItems = items.filter(elem =>
+    elem.nome.toLowerCase().includes(search.toLowerCase()),
+  );
+
   useEffect(() => {
+    const storageItems = JSON.parse(localStorage.getItem('items'));
+    let data;
+
     async function loadItems() {
       if (localStorage.length === 0) {
         const response = await api.get('/5d3b57023000005500a2a0a6');
         data = response.data.produtos;
         localStorage.setItem('items', JSON.stringify(data));
       } else {
-        data = localStorageItems;
+        data = storageItems;
       }
 
-      handleMenu();
+      switch (locationPath) {
+        case '/':
+          setTitle(' - Conheça todos os nossos produtos');
+          setSubtitle('Listagem de produtos - clique no produto desejado para saber mais');
+          break;
+        case '/exclusivos':
+          data = data.filter(elem => elem.exclusivo === true);
+          setTitle(' - Conheça nossos produtos exclusivos');
+          setSubtitle(
+            'Listagem de produtos exclusivos - clique no produto desejado para saber mais',
+          );
+          break;
+        case '/promocao':
+          data = data.filter(elem => elem.promocao === true);
+          setTitle(' - Conheça nossas promoções');
+          setSubtitle(
+            'Listagem de produtos em promoção - clique no produto desejado para saber mais',
+          );
+          break;
+        case '/favoritos':
+          data = data.filter(elem => elem.favoritos === true);
+          setTitle(' - Meus Favoritos');
+          setSubtitle(
+            `Listagem de produtos marcados como favoritos -
+            clique no produto desejado para saber mais`,
+          );
+          break;
+        default:
+          break;
+      }
 
       setItems(data);
       setLoading(false);
     }
 
     loadItems();
-  }, [location]);
-
-  function handleInput(e) {
-    setSearch(e.target.value);
-  }
-
-  const filteredItems = items.filter(elem => {
-    return elem.nome.toLowerCase().includes(search.toLowerCase());
-  });
+  }, [locationPath, countFavorite]);
 
   return (
     <div className="dashboard">
@@ -90,7 +88,7 @@ export default function Dashboard({ history }) {
               Empresa XPTO
               <span>{title}</span>
             </h1>
-            <p>{subTitle}</p>
+            <p>{subtitle}</p>
           </div>
           <div className="dashboard-search">
             <Search handleInput={handleInput} />
@@ -98,7 +96,7 @@ export default function Dashboard({ history }) {
         </div>
         <div className="dashboard-content">
           {filteredItems.length > 0 ? (
-            filteredItems.map(elem => <Item key={elem.id} item={elem} />)
+            filteredItems.map(elem => <Item key={elem.id} item={elem} handleCount={handleCount} />)
           ) : loading === true ? (
             <>
               <Loader />
