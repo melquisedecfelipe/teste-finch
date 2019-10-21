@@ -7,7 +7,7 @@ import Item from '../../components/Item';
 import Search from '../../components/Search';
 import Loader from '../../components/Loader';
 
-export default function Dashboard({ history }) {
+export default function Home({ history }) {
   const [items, setItems] = useState([]);
   const [title, setTitle] = useState(' - Carregando...');
   const [subtitle, setSubtitle] = useState('Carregando...');
@@ -80,9 +80,9 @@ export default function Dashboard({ history }) {
   }, [locationPath, countFavorite]);
 
   return (
-    <div className="dashboard">
-      <div className="dashboard-container">
-        <div className="dashboard-header">
+    <div className="home">
+      <div className="home-container">
+        <div className="home-header">
           <div>
             <h1>
               Empresa XPTO
@@ -90,11 +90,11 @@ export default function Dashboard({ history }) {
             </h1>
             <p>{subtitle}</p>
           </div>
-          <div className="dashboard-search">
+          <div className="home-search">
             <Search handleInput={handleInput} />
           </div>
         </div>
-        <div className="dashboard-content">
+        <div className="home-content">
           {filteredItems.length > 0 ? (
             filteredItems.map(elem => <Item key={elem.id} item={elem} handleCount={handleCount} />)
           ) : loading === true ? (

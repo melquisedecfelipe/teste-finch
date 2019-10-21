@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { formatPrice } from '../../services/format';
 
 import './styles.scss';
 
 import Checkbox from '../Checkbox';
 
-export default function Dashboard({ item, handleCount }) {
+export default function Home({ item, handleCount }) {
   const { id, imagem, exclusivo, promocao, valor, favoritos, nome, decricaoCurta } = item;
 
   function handleCheckbox() {
@@ -32,12 +33,7 @@ export default function Dashboard({ item, handleCount }) {
       </Link>
       <div className="item-content">
         <div className="item-header">
-          <h1>
-            {parseInt(valor, 10).toLocaleString('pt-br', {
-              style: 'currency',
-              currency: 'BRL',
-            })}
-          </h1>
+          <h1>{formatPrice(valor)}</h1>
           <Checkbox id={id} favoritos={favoritos} handleCheckbox={handleCheckbox} />
         </div>
         <h1>{nome}</h1>

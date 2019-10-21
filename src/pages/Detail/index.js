@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { formatPrice } from '../../services/format';
 
 import './styles.scss';
 
@@ -21,12 +22,7 @@ export default function Detail({ match }) {
           <div>
             <div className="item-content">
               <h1>{item.nome}</h1>
-              <span>
-                {parseInt(item.valor, 10).toLocaleString('pt-br', {
-                  style: 'currency',
-                  currency: 'BRL',
-                })}
-              </span>
+              <span>{formatPrice(item.valor)}</span>
             </div>
             <p>{item.decricaoCurta}</p>
           </div>
