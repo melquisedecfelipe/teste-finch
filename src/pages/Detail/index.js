@@ -51,13 +51,6 @@ export default function Detail({ match }) {
             <p>{item.descricaoLonga}</p>
           </div>
         </div>
-        {/* <div className="item-datasheet">
-          <h1>Ficha Técnica</h1>
-          <div>
-            <ul>
-            </ul>
-          </div>
-        </div> */}
       </div>
     </div>
   );
