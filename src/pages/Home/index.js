@@ -12,7 +12,7 @@ export default function Home({ history }) {
   const [title, setTitle] = useState(' - Carregando...');
   const [subtitle, setSubtitle] = useState('Carregando...');
   const [search, setSearch] = useState('');
-  const [countFavorite, setCountFavorite] = useState(0);
+  const [countFavorite, setCountFavorite] = useState(null);
   const [loading, setLoading] = useState(true);
   const locationPath = history.location.pathname;
 
