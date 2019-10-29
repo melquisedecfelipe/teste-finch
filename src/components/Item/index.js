@@ -6,21 +6,8 @@ import './styles.scss';
 
 import Checkbox from '../Checkbox';
 
-export default function Home({ item, handleCount }) {
-  const { id, imagem, exclusivo, promocao, valor, favoritos, nome, decricaoCurta } = item;
-
-  function handleCheckbox() {
-    let storageItems = JSON.parse(localStorage.getItem('items'));
-
-    const items = storageItems.map(elem =>
-      elem.id === id ? { ...elem, favoritos: !elem.favoritos } : elem,
-    );
-    localStorage.setItem('items', JSON.stringify(items));
-
-    storageItems = JSON.parse(localStorage.getItem('items'));
-    const favorites = storageItems.filter(elem => elem.favoritos === true);
-    handleCount(favorites.length);
-  }
+function Home({ item }) {
+  const { id, imagem, exclusivo, promocao, valor, favorito, nome, decricaoCurta } = item;
 
   return (
     <div className="dashboard-item">
@@ -34,7 +21,7 @@ export default function Home({ item, handleCount }) {
       <div className="item-content">
         <div className="item-header">
           <h1>{formatPrice(valor)}</h1>
-          <Checkbox id={id} favoritos={favoritos} handleCheckbox={handleCheckbox} />
+          <Checkbox id={id} favorito={favorito} />
         </div>
         <h1>{nome}</h1>
         <p>{decricaoCurta}</p>
@@ -42,3 +29,5 @@ export default function Home({ item, handleCount }) {
     </div>
   );
 }
+
+export default Home;

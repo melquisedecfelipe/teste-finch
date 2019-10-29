@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import api from '../../services/api';
 
 import './styles.scss';
@@ -7,12 +9,22 @@ import Item from '../../components/Item';
 import Search from '../../components/Search';
 import Loader from '../../components/Loader';
 
-export default function Home({ history }) {
-  const [items, setItems] = useState([]);
-  const [title, setTitle] = useState(' - Carregando...');
-  const [subtitle, setSubtitle] = useState('Carregando...');
-  const [search, setSearch] = useState('');
-  const [countFavorite, setCountFavorite] = useState(null);
+import { Creators as ItemActions } from '../../store/ducks/item';
+
+function Home({
+  items,
+  title,
+  subtitle,
+  search,
+  favoriteCount,
+  history,
+  setItems,
+  getAll,
+  getExclusive,
+  getPromotion,
+  getFavorite,
+  setSearch,
+}) {
   const [loading, setLoading] = useState(true);
   const locationPath = history.location.pathname;
 
@@ -20,64 +32,50 @@ export default function Home({ history }) {
     setSearch(e.target.value);
   }
 
-  function handleCount(e) {
-    setCountFavorite(e);
-  }
-
-  const filteredItems = items.filter(elem =>
-    elem.nome.toLowerCase().includes(search.toLowerCase()),
-  );
-
   useEffect(() => {
-    const storageItems = JSON.parse(localStorage.getItem('items'));
-    let data;
-
     async function loadItems() {
       if (localStorage.length === 0) {
-        const response = await api.get('/5d3b57023000005500a2a0a6');
-        data = response.data.produtos;
-        localStorage.setItem('items', JSON.stringify(data));
-      } else {
-        data = storageItems;
+        const { data } = await api.get('/5d3b57023000005500a2a0a6');
+        setItems(data.produtos);
       }
+
+      const storageItems = JSON.parse(localStorage.getItem('items'));
 
       switch (locationPath) {
         case '/':
-          setTitle(' - Conheça todos os nossos produtos');
-          setSubtitle('Listagem de produtos - clique no produto desejado para saber mais');
+          getAll(storageItems);
           break;
         case '/exclusivos':
-          data = data.filter(elem => elem.exclusivo === true);
-          setTitle(' - Conheça nossos produtos exclusivos');
-          setSubtitle(
-            'Listagem de produtos exclusivos - clique no produto desejado para saber mais',
-          );
+          getExclusive(storageItems);
           break;
         case '/promocao':
-          data = data.filter(elem => elem.promocao === true);
-          setTitle(' - Conheça nossas promoções');
-          setSubtitle(
-            'Listagem de produtos em promoção - clique no produto desejado para saber mais',
-          );
+          getPromotion(storageItems);
           break;
         case '/favoritos':
-          data = data.filter(elem => elem.favoritos === true);
-          setTitle(' - Meus Favoritos');
-          setSubtitle(
-            `Listagem de produtos marcados como favoritos -
-            clique no produto desejado para saber mais`,
-          );
+          getFavorite(storageItems);
           break;
         default:
           break;
       }
 
-      setItems(data);
       setLoading(false);
     }
 
     loadItems();
-  }, [locationPath, countFavorite]);
+  }, [
+    setItems,
+    getAll,
+    getExclusive,
+    getPromotion,
+    getFavorite,
+    setSearch,
+    locationPath,
+    favoriteCount,
+  ]);
+
+  const filteredItems = items.filter(elem =>
+    elem.nome.toLowerCase().includes(search.toLowerCase()),
+  );
 
   return (
     <div className="home">
@@ -96,7 +94,7 @@ export default function Home({ history }) {
         </div>
         <div className="home-content">
           {filteredItems.length > 0 ? (
-            filteredItems.map(elem => <Item key={elem.id} item={elem} handleCount={handleCount} />)
+            filteredItems.map(elem => <Item key={elem.id} item={elem} />)
           ) : loading === true ? (
             <>
               <Loader />
@@ -113,3 +111,18 @@ export default function Home({ history }) {
     </div>
   );
 }
+
+const mapStateToProps = state => ({
+  items: state.item.items,
+  title: state.item.title,
+  subtitle: state.item.subtitle,
+  search: state.item.search,
+  favoriteCount: state.item.favoriteCount,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(ItemActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Home);
