@@ -1,17 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import './styles.scss';
 
-export default function Checkbox({ id, favoritos, handleCheckbox }) {
+import { Creators as ItemActions } from '../../store/ducks/item';
+
+function Checkbox({ id, favorito, setFavorite }) {
+  function handleCheckbox() {
+    setFavorite(id);
+  }
+
   return (
     <div className="item-check">
       <label htmlFor={id}>
         <input
           type="checkbox"
           id={id}
-          value={favoritos}
+          value={favorito}
           onChange={() => handleCheckbox()}
-          defaultChecked={favoritos === true}
+          defaultChecked={favorito === true}
         />
         <span />
       </label>
@@ -19,3 +27,9 @@ export default function Checkbox({ id, favoritos, handleCheckbox }) {
     </div>
   );
 }
+const mapDispatchToProps = dispatch => bindActionCreators(ItemActions, dispatch);
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Checkbox);
