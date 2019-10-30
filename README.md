@@ -31,15 +31,15 @@
 
 This project was developed with the following technologies:
 
--  [Axios](https://github.com/axios/axios)
--  [Eslint](https://eslint.org/)
--  [Husky](https://github.com/typicode/husky)
--  [Node sass](https://www.npmjs.com/package/node-sass)
--  [Prettier](https://prettier.io/)
--  [React](https://reactjs.org/)
--  [React content loader](https://www.npmjs.com/package/react-content-loader)
--  [React router](https://reacttraining.com/react-router/)
--  [Redux dev tools](https://github.com/zalmoxisus/redux-devtools-extension)
+- [Axios](https://github.com/axios/axios)
+- [Eslint](https://eslint.org/)
+- [Husky](https://github.com/typicode/husky)
+- [Node sass](https://www.npmjs.com/package/node-sass)
+- [Prettier](https://prettier.io/)
+- [React](https://reactjs.org/)
+- [React content loader](https://www.npmjs.com/package/react-content-loader)
+- [React router](https://reacttraining.com/react-router/)
+- [Redux dev tools](https://github.com/zalmoxisus/redux-devtools-extension)
 
 ## :information_source: How To Use
 
@@ -60,6 +60,7 @@ $ npm start
 ```
 
 ## :memo: License
+
 This project is under the MIT license. See the [LICENSE](https://github.com/melquisedecfelipe/finch/blob/master/LICENSE) for more information.
 
 ---
