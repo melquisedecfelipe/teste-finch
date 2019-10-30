@@ -27,6 +27,19 @@ function getLocalStorage(id) {
   localStorage.setItem('items', JSON.stringify(updateFavorites));
 }
 
+function setSearchHistory(search) {
+  const storageHistory = JSON.parse(localStorage.getItem('history-search'));
+  setTimeout(() => {
+    if (storageHistory) {
+      storageHistory.push(search);
+      localStorage.setItem('history-search', JSON.stringify(storageHistory));
+    } else {
+      localStorage.setItem('history-search', JSON.stringify([search]));
+    }
+  }, 1500);
+  return search;
+}
+
 // REDUCERS
 export default function item(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -79,7 +92,7 @@ export default function item(state = INITIAL_STATE, action) {
     case Types.SET_SEARCH:
       return {
         ...state,
-        search: action.search,
+        search: setSearchHistory(action.search),
       };
     default:
       return state;
