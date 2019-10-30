@@ -24,19 +24,23 @@ function getLocalStorage(id) {
   const updateFavorites = JSON.parse(localStorage.getItem('items')).map(elem =>
     elem.id === id ? { ...elem, favorito: !elem.favorito } : elem,
   );
+
   localStorage.setItem('items', JSON.stringify(updateFavorites));
 }
 
 function setSearchHistory(search) {
   const storageHistory = JSON.parse(localStorage.getItem('history-search'));
+  const searchTrim = search.trim();
+
   setTimeout(() => {
     if (storageHistory) {
-      storageHistory.push(search);
+      storageHistory.push(searchTrim);
       localStorage.setItem('history-search', JSON.stringify(storageHistory));
     } else {
-      localStorage.setItem('history-search', JSON.stringify([search]));
+      localStorage.setItem('history-search', JSON.stringify([searchTrim]));
     }
   }, 1500);
+
   return search;
 }
 
