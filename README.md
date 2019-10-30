@@ -39,6 +39,7 @@ This project was developed with the following technologies:
 -  [React](https://reactjs.org/)
 -  [React content loader](https://www.npmjs.com/package/react-content-loader)
 -  [React router](https://reacttraining.com/react-router/)
+-  [Redux dev tools](https://github.com/zalmoxisus/redux-devtools-extension)
 
 ## :information_source: How To Use
 
