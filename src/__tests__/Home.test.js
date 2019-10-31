@@ -1,15 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Provider } from 'react-redux';
-import Loader from './index';
+import Home from '../pages/Home/index';
 
-import store from '../../store';
+import store from '../store';
 
-describe('Loader component testing with Enzyme', () => {
+describe('Home page testing with Enzyme', () => {
   it('renders without crashing', () => {
     const wrapper = shallow(
       <Provider store={store}>
-        <Loader />
+        <Home />
       </Provider>,
     );
 
