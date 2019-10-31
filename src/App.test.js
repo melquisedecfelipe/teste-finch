@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import App from './App';
 
-describe('App component testing with Enzyme', () => {
+describe('App testing with Enzyme', () => {
    it('renders without crashing', () => {
       shallow(<App />);
     });
