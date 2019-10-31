@@ -1,9 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import App from './App';
 
 describe('App testing with Enzyme', () => {
    it('renders without crashing', () => {
-      shallow(<App />);
+      expect(<App />).toMatchSnapshot();
     });
 });
