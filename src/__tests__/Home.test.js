@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Provider } from 'react-redux';
-import Home from '../pages/Home/index';
+import Home from '../pages/Home';
 
 import store from '../store';
 

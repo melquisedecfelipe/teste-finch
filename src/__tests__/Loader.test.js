@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Provider } from 'react-redux';
-import Loader from '../components/Loader/index';
+import Loader from '../components/Loader';
 
 import store from '../store';
 
