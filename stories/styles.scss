@@ -1,0 +1,15 @@
+body {
+  background: #f1f3f3;
+  padding: 20px;
+}
+
+.loader {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  width: 300px;
+}
+
+.search {
+  width: 300px;
+}
