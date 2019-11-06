@@ -42,6 +42,7 @@ This project was developed with the following technologies:
 - [React content loader](https://www.npmjs.com/package/react-content-loader)
 - [React router](https://reacttraining.com/react-router/)
 - [Redux dev tools](https://github.com/zalmoxisus/redux-devtools-extension)
+- [Storybook](https://storybook.js.org/)
 
 ## :information_source: How To Use
 
@@ -59,6 +60,12 @@ $ npm i
 
 # Run frontend
 $ npm start
+
+# Run test
+$ npm teste
+
+# Run storybook
+$ npm run storybook
 ```
 
 ## :memo: License
