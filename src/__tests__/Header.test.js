@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Loader from '../components/Loader';
+import Header from '../components/Header';
 
-describe('Loader testing with Enzyme', () => {
+describe('Header testing with Enzyme', () => {
   it('renders without crashing', () => {
-    const wrapper = shallow(<Loader />);
+    const wrapper = shallow(<Header />);
 
     expect(wrapper).toMatchSnapshot();
   });

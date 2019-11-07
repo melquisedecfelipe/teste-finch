@@ -1,18 +1,18 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
-import Detail from '../pages/Detail';
+import Checkbox from '../components/Checkbox';
 
 import state from '../services/mockStore';
 
-describe('Detail testing with Enzyme', () => {
+describe('Checkbox testing with Enzyme', () => {
   const mockStore = configureStore();
   let store;
   let wrapper;
 
   beforeEach(() => {
     store = mockStore(state);
-    wrapper = shallow(<Detail store={store} />);
+    wrapper = shallow(<Checkbox store={store} />);
   });
 
   it('renders without crashing', () => {
