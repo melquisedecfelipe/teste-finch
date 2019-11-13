@@ -1,8 +1,9 @@
+version: '3'
 services:
-  finch:
+  frontend:
     network_mode: host
     restart: always
-    container_name: finch
+    container_name: frontend
     build:
       context: .
       dockerfile: Dockerfile
