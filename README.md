@@ -22,7 +22,7 @@
 </p>
 
 <p align="center">
-  <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="https://finch-frontend.herokuapp.com" target="_blank">Demo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-license">License</a>
 </p>
@@ -62,10 +62,16 @@ $ npm i
 $ npm start
 
 # Run test
-$ npm teste
+$ npm test
 
 # Run storybook
 $ npm run storybook
+```
+
+## :whale2: Docker
+```bash
+# Run docker
+$ docker-compose up
 ```
 
 ## :memo: License
