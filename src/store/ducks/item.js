@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
   items: [],
-  title: 'Carregando...',
+  title: ' - Carregando...',
   subtitle: 'Carregando...',
   search: '',
   detail: [],
