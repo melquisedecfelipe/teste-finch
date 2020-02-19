@@ -41,6 +41,7 @@ This project was developed with the following technologies:
 - [Prettier](https://prettier.io/)
 - [React](https://reactjs.org/)
 - [React router](https://reacttraining.com/react-router/)
+- [Redux](https://redux.js.org/)
 - [Storybook](https://storybook.js.org/)
 
 ## :information_source: How To Use
