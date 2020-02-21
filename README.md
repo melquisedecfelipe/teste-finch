@@ -51,11 +51,8 @@ To clone and run this application, you'll need [Git](https://git-scm.com), [Node
 # Clone this repository
 $ git clone https://github.com/melquisedecfelipe/finch
 
-# Go into the repository
-$ cd finch
-
-# Install dependencies
-$ npm i
+# Go into the repository and install dependencies
+$ cd finch && npm i
 
 # Run frontend
 $ npm start
