@@ -22,7 +22,7 @@
 </p>
 
 <p align="center">
-  <a href="https://mf-finch.herokuapp.com">Demo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="https://mf-finch.netlify.com">Demo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-license">License</a>
@@ -41,6 +41,7 @@ This project was developed with the following technologies:
 - [Prettier](https://prettier.io/)
 - [React](https://reactjs.org/)
 - [React router](https://reacttraining.com/react-router/)
+- [Redux](https://redux.js.org/)
 - [Storybook](https://storybook.js.org/)
 
 ## :information_source: How To Use
