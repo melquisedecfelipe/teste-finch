@@ -1,6 +1,5 @@
 <h1 align="center">
     <img alt="finch" src="https://res.cloudinary.com/dtifsqadc/image/upload/v1570841420/code_2x_p0tgot.png" />
-    <br>
 </h1>
 
 <p align="center">
